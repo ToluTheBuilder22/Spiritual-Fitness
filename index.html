@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport"/>
+<title>Christian Spiritual Fitness</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+  .dark-mode {
+    background-color: #121212;
+    color: #eee;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #444;
+    color: #fff;
+    padding: 10px;
+  }
+  section {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background: white;
+  }
+  .dark-mode section {
+    background: #222;
+    border-color: #444;
+  }
+  button {
+    padding: 5px 10px;
+    margin-top: 5px;
+    cursor: pointer;
+  }
+  #biblePlan {
+    max-height: 200px;
+    overflow-y: auto;
+    background: #fafafa;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  .dark-mode #biblePlan {
+    background: #333;
+    border-color: #555;
+  }
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  ul li {
+    margin-bottom: 6px;
+  }
+  ul li a {
+    color: #0066cc;
+    text-decoration: none;
+  }
+  .dark-mode ul li a {
+    color: #66aaff;
+  }
+  
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;      /* Prevent side scroll */
+  overflow-y: auto;        /* Allow vertical scroll */
+  overscroll-behavior: contain;
+  touch-action: pan-y;     /* Allow vertical hand scroll only */
+}
+</style>
+</head>
+<body>
+  <header>
+    <h1>Christian Spiritual Fitness</h1>
+    <button id="themeToggle">Toggle Theme</button>
+  </header>
+
+  <section id="morningQuote">
+    <h2>Morning Bible Quote</h2>
+    <p id="quote"></p>
+  </section>
+
+  <section id="bibleSection">
+    <h2>Bible (Genesis to Revelation)</h2>
+    <!-- BibleGateway embed showing Genesis 1 as default -->
+    <iframe id="bibleIframe" src="https://www.biblegateway.com/passage/?search=Genesis+1&version=KJV" width="100%" height="400" style="border:none;"></iframe>
+  </section>
+
+  <section id="biblePlanSection">
+    <h2>One-Year Bible Reading Plan</h2>
+    <p>Read 2-3 chapters daily from Genesis to Revelation. Select the day below:</p>
+    <select id="daySelect"></select>
+    <button onclick="showPlan()">Show Plan</button>
+    <div id="biblePlan"></div>
+  </section>
+
+  <section id="alarmClock">
+    <h2>Prayer Alarm Clock</h2>
+    <label>Set Alarm for Prayer:
+      <input type="time" id="prayerTime" />
+    </label>
+    <button onclick="setPrayerAlarm()">Set Alarm</button>
+    <p id="alarmStatus"></p>
+    <audio id="alarmSound" src="shift-song.mp3" preload="auto"></audio>
+  </section>
+
+
+  <section id="films">
+    <h2>Christian Films & Mount Zion Movies</h2>
+    <ul>
+      <li><a href="https://www.youtube.com/results?search_query=Mount+Zion+films" target="_blank" rel="noopener noreferrer">Mount Zion Films</a></li>
+      <li><a href="https://www.youtube.com/results?search_query=christian+movies" target="_blank" rel="noopener noreferrer">Christian Movies on YouTube</a></li>
+    </ul>
+  </section>
+
+  <section id="pastors">
+    <h2>Pastors & Great Men of God (Nigeria)</h2>
+    <ul>
+      <li><a href="https://www.youtube.com/results?search_query=E.A.+Adeboye+sermons" target="_blank" rel="noopener noreferrer">Pastor E.A. Adeboye</a></li>
+      <li><a href="https://www.youtube.com/results?search_query=David+Oyedepo+sermons" target="_blank" rel="noopener noreferrer">Bishop David Oyedepo</a></li>
+      <li><a href="https://www.youtube.com/results?search_query=Paul+Enenche+sermons" target="_blank" rel="noopener noreferrer">Dr. Paul Enenche</a></li>
+      <li><a href="https://www.youtube.com/results?search_query=Joshua+Selman+sermons" target="_blank" rel="noopener noreferrer">Apostle Joshua Selman</a></li>
+      <li><a href="https://www.youtube.com/results?search_query=Chris+Oyakhilome+sermons" target="_blank" rel="noopener noreferrer">Pastor Chris Oyakhilome</a></li>
+      <li><a href="https://www.youtube.com/results?search_query=Sam+Adeyemi+sermons" target="_blank" rel="noopener noreferrer">Rev. Sam Adeyemi</a></li>
+      <li><a href="https://www.youtube.com/results?search_query=Mike+Bamiloye+Mount+Zion" target="_blank" rel="noopener noreferrer">Bro. Mike Bamiloye (Mount Zion)</a></li>
+       <li><a href="https://www.youtube.com/results?search_query=Lawerance+Oyor+sermons" target="_blank" rel="noopener noreferrer">Pst Lawerance Oyor</a></li>
+    </ul>
+    
+  <h1>Gospel Singers</h1>
+  <ul>
+    <li>Ada Ehi</li>
+    <li>Bisi Olatilo</li>
+    <li>Blessing Okoro</li>
+    <li>Bola Are</li>
+    <li>Bukola Bekes</li>
+    <li>Charles Oputa (Charlie Boy Gospel)</li>
+    <li>Chidinma Ekile</li>
+    <li>Chinyere Ibekwe</li>
+    <li>Chinyere Udoma</li>
+    <li>Chris Morgan</li>
+    <li>Eben</li>
+    <li>Ebele Okoye</li>
+    <li>Ehis D’Greatest</li>
+    <li>Ebenezer Obey</li>
+    <li>Emeka Ezeugo</li>
+    <li>Emeka Okoro</li>
+    <li>Emmanuel Iren</li>
+    <li>Emmanuel Odusola</li>
+    <li>Enkay Ogbodu</li>
+    <li>Faith Owolabi</li>
+    <li>Folabi Nuel</li>
+    <li>Frank Edwards</li>
+    <li>Gabriel Eziashi</li>
+    <li>GloryChuks</li>
+    <li>Gods Will Oyor</li>
+    <li>Helen Paul</li>
+    <li>JJC Skillz (gospel tunes)</li>
+    <li>Joe Praize</li>
+    <li>Joyce Blessing</li>
+    <li>Judikay</li>
+    <li>Kayiso</li>
+    <li>Kazeem Oyewumi</li>
+    <li>Kemi Ayorinde</li>
+    <li>Kingsley Ohawhale</li>
+    <li>Lara George</li>
+    <li>Lawrence Oyor</li>
+    <li>Lilian Esoro</li>
+    <li>Mercy Chinwo</li>
+    <li>Michael Adenuga</li>
+    <li>Michael Smith</li>
+    <li>Mike Abdul</li>
+    <li>Monica Obasogie</li>
+    <li>Nathaniel Atafo</li>
+    <li>Nathaniel Bassey</li>
+    <li>Nneka Obidiegwu</li>
+    <li>Nosa</li>
+    <li>Onyeka Onwenu (gospel works)</li>
+    <li>Onos Ariyo</li>
+    <li>Osinachi Nwachukwu</li>
+    <li>Pat Uwaje-King</li>
+    <li>Praise Ndubuisi</li>
+    <li>Preye Odede</li>
+    <li>Rachel Monye</li>
+    <li>Sammie Okposo</li>
+    <li>Sinach</li>
+    <li>Sola Allyson</li>
+    <li>Sola Praise</li>
+    <li>Steve Crown</li>
+    <li>Sule Aloba</li>
+    <li>Sumisola</li>
+    <li>Theophilus Sunday</li>
+    <li>Timothy Anim</li>
+    <li>Timi Dakolo</li>
+    <li>Tomi Odunsi</li>
+    <li>Tope Alabi</li>
+    <li>Tope Oshin</li>
+    <li>Tosin Okoro</li>
+    <li>Tobe Nwigwe (Nigerian-American)</li>
+    <li>TY Bello</li>
+    <li>Uche Agu</li>
+    <li>Victoria Orenze</li>
+    <li>Yinka Ayefele (gospel vibes)</li>
+  </ul>
+  </section>
+
+<script>
+// Theme toggle button
+document.getElementById("themeToggle").addEventListener("click", function () {
+  document.body.classList.toggle("dark-mode");
+});
+
+// Morning Bible quote randomizer
+document.addEventListener("DOMContentLoaded", function () {
+  const quotes = [
+    "This is the day the Lord has made; let us rejoice and be glad in it. (Psalm 118:24)",
+    "The Lord is my strength and my shield; my heart trusts in him. (Psalm 28:7)",
+    "Be strong and courageous. Do not be afraid; for the Lord your God goes with you. (Deuteronomy 31:6)",
+    "The Lord is my shepherd; I shall not want. (Psalm 23:1)",
+    "Trust in the Lord with all your heart and lean not on your own understanding. (Proverbs 3:5)",
+    "I can do all things through Christ who strengthens me. (Philippians 4:13)",
+    "Your word is a lamp to my feet and a light to my path. (Psalm 119:105)"
+  ];
+  const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+  document.getElementById("quote").textContent = randomQuote;
+
+  populateDaySelect();
+});
+
+// Prayer alarm clock with song "It is the time of shift"
+let alarmTimeout;
+function setPrayerAlarm() {
+  const prayerTimeInput = document.getElementById("prayerTime").value;
+  const alarmStatus = document.getElementById("alarmStatus");
+
+  if (!prayerTimeInput) {
+    alarmStatus.textContent = "Please select a time!";
+    return;
+  }
+
+  if (alarmTimeout) {
+    clearTimeout(alarmTimeout);
+  }
+
+  const alarmSound = document.getElementById("alarmSound");
+  alarmSound.pause();
+  alarmSound.currentTime = 0;
+
+  const now = new Date();
+  const [hours, minutes] = prayerTimeInput.split(":");
+  let alarmTime = new Date();
+  alarmTime.setHours(hours, minutes, 0, 0);
+
+  if (alarmTime <= now) {
+    alarmTime.setDate(alarmTime.getDate() + 1);
+  }
+
+  const timeToAlarm = alarmTime - now;
+  alarmStatus.textContent = `Alarm set for ${prayerTimeInput}.`;
+
+  alarmTimeout = setTimeout(() => {
+    alarmSound.play();
+    alert("Prayer Time! Let’s pray together.");
+  }, timeToAlarm);
+}
+
+
+
+// Bible Dictionary Data
+const bibleDictionaryData = {
+  "faith": "Complete trust or confidence in God.",
+  "grace": "God’s unmerited favor and love.",
+  "salvation": "Being saved from sin and its consequences.",
+  "prayer": "Communicating with God.",
+  "holiness": "Being set apart for God’s purposes.",
+  "repentance": "Turning away from sin and returning to God.",
+  "redemption": "The act of being saved from sin through Jesus Christ.",
+  "baptism": "A Christian sacrament signifying spiritual cleansing and rebirth.",
+  "trinity": "The unity of Father, Son, and Holy Spirit as three persons in one Godhead.",
+  "atonement": "Reconciliation between God and humanity through Jesus Christ's sacrifice.",
+  "prophecy": "A message from God about the future.",
+  "disciple": "A follower of Jesus Christ.",
+  "gospel": "The good news of Jesus Christ’s life, death, and resurrection.",
+  "righteousness": "Being morally right or justifiable in God’s eyes.",
+  "resurrection": "Jesus rising from the dead after crucifixion.",
+  "blessing": "God’s favor and protection.",
+  "covenant": "A sacred agreement between God and His people."
+};
+
+function searchDictionary() {
+  const term = document.getElementById("dictionarySearch").value.trim().toLowerCase();
+  const result = document.getElementById("dictionaryResult");
+
+  if (!term) {
+    result.textContent = "Please enter a search term.";
+    return;
+  }
+
+  let found = false;
+  let output = "";
+
+  for (const key in bibleDictionaryData) {
+    if (key.includes(term)) {
+      output += `${key.charAt(0).toUpperCase() + key.slice(1)}: ${bibleDictionaryData[key]} \n`;
+      found = true;
+    }
+  }
+
+  if (found) {
+    result.textContent = output.trim();
+  } else {
+    result.textContent = "No definition found. Try another term.";
+  }
+}
+
+// One-year Bible reading plan
+const biblePlan = generateBiblePlan();
+
+function generateBiblePlan() {
+  const books = ["Genesis", "Exodus", "Leviticus", "Numbers", "Deuteronomy", "Joshua", "Judges", "Ruth", "1 Samuel", "2 Samuel",
+    "1 Kings", "2 Kings", "1 Chronicles", "2 Chronicles", "Ezra", "Nehemiah", "Esther", "Job", "Psalms", "Proverbs",
+    "Ecclesiastes", "Song of Solomon", "Isaiah", "Jeremiah", "Lamentations", "Ezekiel", "Daniel", "Hosea", "Joel", "Amos",
+    "Obadiah", "Jonah", "Micah", "Nahum", "Habakkuk", "Zephaniah", "Haggai", "Zechariah", "Malachi", "Matthew",
+    "Mark", "Luke", "John", "Acts", "Romans", "1 Corinthians", "2 Corinthians", "Galatians", "Ephesians", "Philippians",
+    "Colossians", "1 Thessalonians", "2 Thessalonians", "1 Timothy", "2 Timothy", "Titus", "Philemon", "Hebrews",
+    "James", "1 Peter", "2 Peter", "1 John", "2 John", "3 John", "Jude", "Revelation"];
+
+  const chaptersPerBook = {
+    "Genesis": 50, "Exodus": 40, "Leviticus": 27, "Numbers": 36, "Deuteronomy": 34,
+    "Joshua": 24, "Judges": 21, "Ruth": 4, "1 Samuel": 31, "2 Samuel": 24,
+    "1 Kings": 22, "2 Kings": 25, "1 Chronicles": 29, "2 Chronicles": 36, "Ezra": 10,
+    "Nehemiah": 13, "Esther": 10, "Job": 42, "Psalms": 150, "Proverbs": 31,
+    "Ecclesiastes": 12, "Song of Solomon": 8, "Isaiah": 66, "Jeremiah": 52, "Lamentations": 5,
+    "Ezekiel": 48, "Daniel": 12, "Hosea": 14, "Joel": 3, "Amos": 9,
+    "Obadiah": 1, "Jonah": 4, "Micah": 7, "Nahum": 3, "Habakkuk": 3,
+    "Zephaniah": 3, "Haggai": 2, "Zechariah": 14, "Malachi": 4, "Matthew": 28,
+    "Mark": 16, "Luke": 24, "John": 21, "Acts": 28, "Romans": 16,
+    "1 Corinthians": 16, "2 Corinthians": 13, "Galatians": 6, "Ephesians": 6, "Philippians": 4,
+    "Colossians": 4, "1 Thessalonians": 5, "2 Thessalonians": 3, "1 Timothy": 6, "2 Timothy": 4,
+    "Titus": 3, "Philemon": 1, "Hebrews": 13, "James": 5, "1 Peter": 5,
+    "2 Peter": 3, "1 John": 5, "2 John": 1, "3 John": 1, "Jude": 1,
+    "Revelation": 22
+  };
+
+  let plan = [];
+  let currentBookIndex = 0;
+  let currentChapter = 1;
+
+  for (let day = 1; day <= 365; day++) {
+    let chaptersToRead = (day % 2 === 0) ? 3 : 2; // alternate 2 and 3 chapters per day
+    let reading = [];
+
+    for (let c = 0; c < chaptersToRead; c++) {
+      if (currentChapter > chaptersPerBook[books[currentBookIndex]]) {
+        currentBookIndex++;
+        currentChapter = 1;
+        if (currentBookIndex >= books.length) break;
+      }
+      reading.push(`${books[currentBookIndex]} ${currentChapter}`);
+      currentChapter++;
+    }
+    plan[day] = reading.join(", ");
+  }
+
+  return plan;
+}
+
+function populateDaySelect() {
+  const daySelect = document.getElementById("daySelect");
+  for (let i = 1; i <= 365; i++) {
+    let option = document.createElement("option");
+    option.value = i;
+    option.textContent = "Day " + i;
+    daySelect.appendChild(option);
+  }
+}
+
+function showPlan() {
+  const day = parseInt(document.getElementById("daySelect").value);
+  if (isNaN(day) || day < 1 || day > 365) {
+    alert("Please select a valid day.");
+    return;
+  }
+  const planText = biblePlan[day] || "Reading plan not found for this day.";
+  document.getElementById("biblePlan").textContent = `Bible Reading for Day ${day}: ${planText}`;
+}
+
+
+</script>
+
+</body> </html> 
